@@ -89,6 +89,7 @@ class ET extends Extension
                 "memory_limit" => to_shorthand_int($config->get_int(MediaConfig::MEM_LIMIT)),
                 "disk_use" => to_shorthand_int((int)disk_total_space("./") - (int)disk_free_space("./")),
                 "disk_total" => to_shorthand_int((int)disk_total_space("./")),
+                'total_images_filesize' => to_shorthand_int((int)$database->get_one("SELECT SUM(filesize) FROM images")),
             ],
             "thumbnails" => [
                 "engine" => $config->get_string(ImageConfig::THUMB_ENGINE),
