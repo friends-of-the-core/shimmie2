@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-	var metatags = ['order:id', 'order:width', 'order:height', 'order:filesize', 'order:filename', 'order:posted'];
+	var metatags = ['order:id', 'order:width', 'order:height', 'order:filesize', 'order:filename', 'order:favorites', 'order:posted'];
 
 	$('[name="search"]').tagit({
 		singleFieldDelimiter: ' ',
