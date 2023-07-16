@@ -171,11 +171,21 @@ class CommentList extends Extension
     {
         if ($event->page_matches("comment")) {
             switch ($event->get_arg(0)) {
-                case "add": $this->onPageRequest_add(); break;
-                case "delete": $this->onPageRequest_delete($event); break;
-                case "bulk_delete": $this->onPageRequest_bulk_delete(); break;
-                case "list": $this->onPageRequest_list($event); break;
-                case "beta-search": $this->onPageRequest_beta_search($event); break;
+                case "add":
+                    $this->onPageRequest_add();
+                    break;
+                case "delete":
+                    $this->onPageRequest_delete($event);
+                    break;
+                case "bulk_delete":
+                    $this->onPageRequest_bulk_delete();
+                    break;
+                case "list":
+                    $this->onPageRequest_list($event);
+                    break;
+                case "beta-search":
+                    $this->onPageRequest_beta_search($event);
+                    break;
             }
         }
     }
@@ -239,7 +249,7 @@ class CommentList extends Extension
 
     private function onPageRequest_list(PageRequestEvent $event)
     {
-        global $cache, $database, $user;
+        global $cache, $config, $database, $user;
 
         $where = SPEED_HAX ? "WHERE posted > now() - interval '24 hours'" : "";
 
@@ -276,6 +286,13 @@ class CommentList extends Extension
                 !in_array($image->rating, $user_ratings)
             ) {
                 $image = null; // this is "clever", I may live to regret it
+            }
+            if (
+                Extension::is_enabled(ApprovalInfo::KEY) && !is_null($image) &&
+                $config->get_bool(ApprovalConfig::IMAGES) &&
+                $image->approved!==true
+            ) {
+                $image = null;
             }
             if (!is_null($image)) {
                 $comments = $this->get_comments($image->id);

@@ -373,7 +373,7 @@ class Image
         }
 
         if (is_null($this->posted) || $this->posted == "") {
-            $this->posted = date('c', time());
+            $this->posted = date('Y-m-d H:i:s', time());
         }
 
         if (is_null($this->id)) {

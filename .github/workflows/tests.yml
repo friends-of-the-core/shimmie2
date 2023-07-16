@@ -30,17 +30,23 @@ jobs:
     - name: Set up PHP
       uses: shivammathur/setup-php@master
       with:
-        php-version: 7.4
+        php-version: 8.1
 
-    - name: Check format
-      run: ./vendor/bin/php-cs-fixer fix --dry-run
+    - name: Log Versions
+      run: ./vendor/bin/php-cs-fixer --version
+
+    - name: Format
+      run: ./vendor/bin/php-cs-fixer fix
+
+    - name: Log Diff
+      run: git diff --exit-code
 
   test:
     name: PHP ${{ matrix.php }} / DB ${{ matrix.database }}
     strategy:
       fail-fast: false
       matrix:
-        php: ['7.4', '8.0']
+        php: ['7.4', '8.0', '8.1']
         database: ['pgsql', 'mysql', 'sqlite']
 
     runs-on: ubuntu-latest
