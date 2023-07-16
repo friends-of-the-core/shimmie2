@@ -564,7 +564,7 @@ EOD;
 			<a href=\"https://github.com/shish/shimmie2/graphs/contributors\">Shish &amp; The Team</a>
 			2007-2020,
 			based on the Danbooru concept.
-			Friends of the Core version &copy; 2022 ticky, <a href=\"https://github.com/friends-of-the-core/shimmie2\">source code on GitHub</a>.
+			Friends of the Core version &copy; 2022-2023 ticky, <a href=\"https://github.com/friends-of-the-core/shimmie2\">source code on GitHub</a>.
 			$debug
 			$contact
         ";
