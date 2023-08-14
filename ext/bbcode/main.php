@@ -9,7 +9,7 @@ class BBCode extends FormatterExtension
     {
         $text = $this->extract_code($text);
         foreach ([
-            "b", "i", "u", "s", "sup", "sub", "h1", "h2", "h3", "h4",
+            "b", "i", "u", "s", "sup", "sub", "h1", "h2", "h3", "h4", "h5", "h6",
         ] as $el) {
             $text = preg_replace("!\[$el\](.*?)\[/$el\]!s", "<$el>$1</$el>", $text);
         }
@@ -49,7 +49,7 @@ class BBCode extends FormatterExtension
     public function strip(string $text): string
     {
         foreach ([
-            "b", "i", "u", "s", "sup", "sub", "h1", "h2", "h3", "h4",
+            "b", "i", "u", "s", "sup", "sub", "h1", "h2", "h3", "h4", "h5", "h6",
             "code", "url", "email", "li",
         ] as $el) {
             $text = preg_replace("!\[$el\](.*?)\[/$el\]!s", '$1', $text);

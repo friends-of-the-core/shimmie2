@@ -26,6 +26,8 @@ class BBCodeInfo extends ExtensionInfo
      <li>[h2]Heading 2[/h2]
      <li>[h3]Heading 3[/h3]
      <li>[h4]Heading 4[/h4]
+     <li>[h5]Heading 5[/h5]
+     <li>[h6]Heading 5[/h6]
      <li>[align=left|center|right]Aligned Text[/align]
    </ul>
    <br>
