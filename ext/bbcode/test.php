@@ -39,6 +39,14 @@ class BBCodeTest extends ShimmiePHPUnitTestCase
         );
     }
 
+    public function testInlineCode()
+    {
+        $this->assertEquals(
+            "<code>[b]bold[/b]</code>",
+            $this->filter("[c][b]bold[/b][/c]")
+        );
+    }
+
     public function testNestedList()
     {
         $this->assertEquals(

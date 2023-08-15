@@ -106,11 +106,13 @@ class BBCode extends FormatterExtension
 
     private function extract_code(string $text): string
     {
-        # at the end of this function, the only code! blocks should be
-        # the ones we've added -- others may contain malicious content,
+        # at the end of this function, the only code! or c! blocks should
+        # be the ones we've added -- others may contain malicious content,
         # which would only appear after decoding
         $text = str_replace("[code!]", "[code]", $text);
         $text = str_replace("[/code!]", "[/code]", $text);
+        $text = str_replace("[c!]", "[c]", $text);
+        $text = str_replace("[/c!]", "[/c]", $text);
 
         $l1 = strlen("[code]");
         $l2 = strlen("[/code]");
@@ -135,6 +137,30 @@ class BBCode extends FormatterExtension
 
             $text = $beginning . "[code!]" . $middle . "[/code!]" . $ending;
         }
+
+        $l3 = strlen("[c]");
+        $l4 = strlen("[/c]");
+        while (true) {
+            $start = strpos($text, "[c]");
+            if ($start === false) {
+                break;
+            }
+
+            $end = strpos($text, "[/c]", $start);
+            if ($end === false) {
+                break;
+            }
+
+            if ($end < $start) {
+                break;
+            }
+
+            $beginning = substr($text, 0, $start);
+            $middle = base64_encode(substr($text, $start+$l3, ($end-$start-$l3)));
+            $ending = substr($text, $end + $l4, (strlen($text)-$end+$l4));
+
+            $text = $beginning . "[c!]" . $middle . "[/c!]" . $ending;
+        }
         return $text;
     }
 
@@ -158,6 +184,26 @@ class BBCode extends FormatterExtension
             $ending = substr($text, $end + $l2, (strlen($text)-$end+$l2));
 
             $text = $beginning . "<pre>" . $middle . "</pre>" . $ending;
+        }
+
+        $l3 = strlen("[c!]");
+        $l4 = strlen("[/c!]");
+        while (true) {
+            $start = strpos($text, "[c!]");
+            if ($start === false) {
+                break;
+            }
+
+            $end = strpos($text, "[/c!]");
+            if ($end === false) {
+                break;
+            }
+
+            $beginning = substr($text, 0, $start);
+            $middle = base64_decode(substr($text, $start+$l3, ($end-$start-$l3)));
+            $ending = substr($text, $end + $l4, (strlen($text)-$end+$l4));
+
+            $text = $beginning . "<code>" . $middle . "</code>" . $ending;
         }
         return $text;
     }

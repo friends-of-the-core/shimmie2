@@ -52,6 +52,7 @@ class BBCodeInfo extends ExtensionInfo
      <li>[ol]Ordered list[/ol]
      <li>[li]List Item[/li]
      <li>[code]<pre>print(\"Hello World!\");</pre>[/code]
+     <li>[c]<code>print(\"Hello World!\");</code>[/c]
      <li>[spoiler]<span style=\"background-color:#000; color:#000;\">Voldemort is bad</span>[/spoiler]
      <li>[quote]<blockquote><small>To be or not to be...</small></blockquote>[/quote]
      <li>[quote=Shakespeare]<blockquote><em>Shakespeare said:</em><br><small>... That is the question</small></blockquote>[/quote]
