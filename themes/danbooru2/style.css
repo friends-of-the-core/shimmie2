@@ -8,7 +8,6 @@ HEADER #site-title {
 padding:0.6rem 2rem 0.25rem;
 }
 HEADER ul#navbar, HEADER ul#subnavbar {
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 font-size:110%;
 white-space:nowrap;
 overflow-x:auto;
@@ -49,6 +48,7 @@ HEADER ul#subnavbar li:first-child {
 margin-left: -0.6rem;
 }
 body {
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 font-weight:normal;
 font-style:normal;
 font-variant:normal;
@@ -57,6 +57,7 @@ font-stretch:normal;
 font-size:80%;
 line-height:normal;
 -x-system-font:none;
+margin: 0;
 }
 h1 {
 margin-top:0;
@@ -74,9 +75,13 @@ padding:0.2rem 0.2rem 0.2rem 0;
 font-size:1rem;
 }
 h4 {
+margin-top:0;
+margin-bottom:0;
 font-size:1.4rem;
 }
 h5 {
+margin-top:0;
+margin-bottom:0;
 font-size:1.2rem;
 }
 table.zebra {border-spacing: 0;border-collapse: collapse;}
@@ -174,6 +179,9 @@ TABLE.tag_list>TBODY>TR>TD {
 TABLE.tag_list>TBODY>TR>TD:after {
 	content: " ";
 }
+body .ui-widget-content {
+font-family: inherit;
+}
 .tag_count {
 display:inline-block;
 margin-left:0.4rem;
@@ -250,7 +258,7 @@ width:600px;
 .setupblock, .tagcategoryblock {
 margin:0.6rem 1rem 0.6rem 0;
 padding:0.5rem 0.6rem 0.7rem;
-width:18rem;
+width:19rem;
 border:1px solid #AAAAAA;
 border-radius:0.25rem;
 display:inline-block;
@@ -304,11 +312,6 @@ text-align:left;
 }
 HEADER h1 {
 text-align:left;
-}
-* {
-margin:0;
-padding:0;
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 }
 a:link {
 color:#006FFA;
